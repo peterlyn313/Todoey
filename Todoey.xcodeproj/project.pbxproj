@@ -16,6 +16,7 @@
 		D047869B1FF4768C0074B550 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D047869A1FF4768C0074B550 /* CategoryViewController.swift */; };
 		D0AC4A921FF64A13003DAE04 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC4A911FF64A13003DAE04 /* Item.swift */; };
 		D0AC4A941FF64A25003DAE04 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC4A931FF64A25003DAE04 /* Category.swift */; };
+		D0AC4A961FF86CD7003DAE04 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AC4A951FF86CD7003DAE04 /* SwipeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D047869A1FF4768C0074B550 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		D0AC4A911FF64A13003DAE04 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D0AC4A931FF64A25003DAE04 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D0AC4A951FF86CD7003DAE04 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			children = (
 				D047869A1FF4768C0074B550 /* CategoryViewController.swift */,
 				D0235AEF1FEF41EB001E8819 /* TodoListViewController.swift */,
+				D0AC4A951FF86CD7003DAE04 /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -240,13 +243,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Todoey/Pods-Todoey-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -264,6 +271,7 @@
 				D047869B1FF4768C0074B550 /* CategoryViewController.swift in Sources */,
 				D0235AF01FEF41EB001E8819 /* TodoListViewController.swift in Sources */,
 				D0235AEE1FEF41EB001E8819 /* AppDelegate.swift in Sources */,
+				D0AC4A961FF86CD7003DAE04 /* SwipeTableViewController.swift in Sources */,
 				D0AC4A941FF64A25003DAE04 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
