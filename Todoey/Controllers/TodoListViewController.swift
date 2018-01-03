@@ -8,12 +8,16 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class TodoListViewController: SwipeTableViewController {
 
     var todoItems: Results<Item>?
 
     var realm = try! Realm()
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var selectedCategory : Category? {
         didSet{
@@ -27,10 +31,54 @@ class TodoListViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-       // print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        tableView.separatorStyle = .none
+    
       
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+            title = selectedCategory?.name
+        
+            guard let colourHex = selectedCategory?.colour  else { fatalError()}
+        
+            updateNavBar(withHexCode: colourHex)
+      
+        
+
+        
+     
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        updateNavBar(withHexCode: "0080FF")
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        
+//        updateNavBar(withHexCode: "1D9BF6")
+//    }
+//    
+    //MARK: - Nav Bar Setup Methods
+    
+    func updateNavBar(withHexCode colourHexCode: String) {
+        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation Controller does not exist")}
+        
+        guard let navBarColour = UIColor(hexString: colourHexCode) else { fatalError()}
+        
+        navBar.barTintColor = navBarColour
+        
+        navBar.tintColor = ContrastColorOf(navBarColour, returnFlat: true)
+        
+        navBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : ContrastColorOf(navBarColour, returnFlat: true)]
+        
+        searchBar.barTintColor = navBarColour
+        
+    }
+    
+    
+    
+    
 
     // MARK: - Tableview Datasource Methods
     
@@ -44,6 +92,12 @@ class TodoListViewController: SwipeTableViewController {
         
         if  let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
+            
+            
+            if let colour = UIColor(hexString : selectedCategory!.colour)?.darken(byPercentage:CGFloat (indexPath.row) / CGFloat (todoItems!.count)) {
+                cell.backgroundColor = colour
+                cell.textLabel?.textColor = ContrastColorOf(colour, returnFlat: true)
+            }
             
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
